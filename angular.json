@@ -6,5 +6,184 @@
   },
   "newProjectRoot": "projects",
   "projects": {
+    "list-rendering": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/list-rendering",
+      "sourceRoot": "projects/list-rendering/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "projects/list-rendering/src/main.ts",
+            "tsConfig": "projects/list-rendering/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/list-rendering/public"
+              }
+            ],
+            "styles": ["projects/list-rendering/src/styles.scss"]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "list-rendering:build:production"
+            },
+            "development": {
+              "buildTarget": "list-rendering:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        }
+      }
+    },
+    "list-search-rxjs": {
+      "projectType": "library",
+      "root": "projects/list-search-rxjs",
+      "sourceRoot": "projects/list-search-rxjs/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/list-search-rxjs/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/list-search-rxjs/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/list-search-rxjs/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "web-socket-api-call": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/web-socket-api-call",
+      "sourceRoot": "projects/web-socket-api-call/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "projects/web-socket-api-call/src/main.ts",
+            "tsConfig": "projects/web-socket-api-call/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/web-socket-api-call/public"
+              }
+            ],
+            "styles": ["projects/web-socket-api-call/src/styles.css"]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "web-socket-api-call:build:production"
+            },
+            "development": {
+              "buildTarget": "web-socket-api-call:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        }
+      }
+    },
+    "mock-api-lib": {
+      "projectType": "library",
+      "root": "projects/mock-api-lib",
+      "sourceRoot": "projects/mock-api-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/mock-api-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/mock-api-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/mock-api-lib/tsconfig.spec.json"
+          }
+        }
+      }
+    }
   }
 }

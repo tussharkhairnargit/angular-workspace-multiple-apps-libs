@@ -6,6 +6,10 @@
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
+    "paths": {
+      "list-search-rxjs": ["./dist/list-search-rxjs"],
+      "mock-api-lib": ["./dist/mock-api-lib"]
+    },
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
@@ -21,5 +25,31 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   },
-  "files": []
+  "files": [],
+  "references": [
+    {
+      "path": "./projects/list-rendering/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/list-rendering/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/list-search-rxjs/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/list-search-rxjs/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/web-socket-api-call/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/web-socket-api-call/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/mock-api-lib/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/mock-api-lib/tsconfig.spec.json"
+    }
+  ]
 }
