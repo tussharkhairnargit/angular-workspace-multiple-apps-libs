@@ -14,9 +14,18 @@
     <div style="margin-top: 20px;">
         <h3>Event List:</h3>
          <hr>
-        <ul>
-            <li *ngFor="let event of eventList()">{{ event }}</li>
-        </ul>
+            <!-- 
+            <ul>
+                <li *ngFor="let event of eventList()">{{ event }}</li>
+            </ul> 
+            -->
+            <ul>
+                @for(event of eventList; track event) {
+                    <li >{{ event }}</li>
+                } @empty {
+                    <strong>No events to display.</strong>
+                }
+            </ul>
     </div>
 
  </section>

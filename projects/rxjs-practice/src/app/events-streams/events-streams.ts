@@ -14,10 +14,10 @@ import { delay, mergeMap, concatMap, exhaustMap , switchMap} from 'rxjs/operator
 export class EventsStreams implements OnInit {
   private readonly destroyRef = inject(DestroyRef);
   subject: Subject<number> = new Subject<number>();
+  //eventList:string[] = [];
   eventList = signal<string[]>([]);
 
   ngOnInit() {
-    this.eventList.set([]);
 
     this.subject
       .pipe(
@@ -30,8 +30,7 @@ export class EventsStreams implements OnInit {
           // concatMap(value => {
           // exhaustMap(value => {
             console.log(`Processing value: ${value}`);
-
-            //this.eventList.push(`Processing value: ${value}`);
+           // this.eventList.push(`Processing value: ${value}`);
             this.eventList.update(events => [...events, `Processing value: ${value}`]);
             return of(value).pipe(delay(2000));  //Because the inner function returns a new Observable using 'of' every time, your outer this.subject becomes a Higher-Order Observable—essentially an Observable that emits Observables.
           })
@@ -40,8 +39,11 @@ export class EventsStreams implements OnInit {
         next: (value) => {
           console.log(`Received value: ${value}`);
             // The template is iterating eventList correctly, and the subscription does execute. 
-            // The missing UI update is caused by mutating a plain array inside the delayed RxJS callback: Angular’s zoneless change detection does not get a reactive state notification from push(). Convert eventList to a signal and update the template to read it, so the delayed emission schedules rendering.
-            // this.eventList.push(`Processing value: ${value}`);
+            // The missing UI update is caused by mutating a plain array inside the delayed RxJS callback: 
+            // Angular’s zoneless change detection does not get a reactive state notification from push(). 
+            // Convert eventList to a signal and update the template to read it, so the delayed emission schedules rendering.
+            // this.eventList.push(`Received value: ${value}`);
+            // this.eventList = [...this.eventList, `Received value: ${value}`];
           this.eventList.update(events => [...events, `Received value: ${value}`]);
         }
       });
