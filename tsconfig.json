@@ -50,6 +50,12 @@
     },
     {
       "path": "./projects/mock-api-lib/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/rxjs-practice/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/rxjs-practice/tsconfig.spec.json"
     }
   ]
 }

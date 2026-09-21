@@ -1,0 +1,23 @@
+<p>Events streams works!</p>
+ <a routerLink="/">Back to Home</a>
+
+ <section>
+    <!-- inline button buttons -->
+    <div>
+        <button (click)="subject.next(1)" class="action"> 1 </button>
+        <button (click)="subject.next(2)" class="action"> 2 </button>
+        <button (click)="subject.next(3)" class="action"> 3 </button>
+        <button (click)="subject.next(4)" class="action"> 4 </button>
+        <button (click)="subject.next(5)" class="action"> 5 </button>
+    </div>
+    
+    <div style="margin-top: 20px;">
+        <h3>Event List:</h3>
+         <hr>
+        <ul>
+            <li *ngFor="let event of eventList()">{{ event }}</li>
+        </ul>
+    </div>
+
+ </section>
+ 
