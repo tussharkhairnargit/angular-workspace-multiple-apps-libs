@@ -13,25 +13,18 @@
     </section>
 
 <ol class="list-container">
-    @for(item of listItems; track item.id){
+    @for(item of listItems; track item){
     <li>
-        <div class="list-item-card">
-            <div  id="index"> {{item.id}} </div>
-            <div class="actions">
-                <input type="checkbox" (change)="toggleSelected(item)">
-                <div (click)="toggleMakeStar(item.id)" >
-                    <span class="star"  [class.is-favorited]="item.stared" ></span>
-                </div>
-            </div>
-            <div class="title">{{item.title}} </div>
-            <div class="actions">
-                <button (click)="removeItem(item.id)" class="delete-btn"> &#x1F5D1;</button>
-                <button (click)="toggleState(item)"> {{ item.disabled ? 'Disabled' : 'Active'}}</button>
-            </div>
-        </div>
+     <app-item-card 
+        [data]="item"
+        (select)="toggleSelected(item)"
+        (disable)="toggleStatus(item)"
+        (markStar)="toggleMakeStar(item.id)"
+        (remove)="removeItem(item.id)"
+     />
     </li>
     }
 </ol>
 </mat-card-content>
 </mat-card>
-<!-- <button (click)="viewState()"> View State </button> -->
+ <button (click)="viewState()"> View State </button> 

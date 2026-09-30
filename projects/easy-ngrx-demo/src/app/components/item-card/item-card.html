@@ -1,0 +1,14 @@
+<div class="list-item-card">
+    <div id="index"> {{item.id}} </div>
+    <div class="actions">
+        <input type="checkbox" (change)="toggleSelected(item)">
+        <div (click)="toggleMakeStar(item)">
+            <span class="star" [class.is-favorited]="item.stared"></span>
+        </div>
+    </div>
+    <div class="title">{{item.title}} </div>
+    <div class="actions">
+        <button (click)="removeItem(item)" class="delete-btn"> &#x1F5D1;</button>
+        <button (click)="toggleStatus(item)"> {{ item.disabled ? 'Disabled' : 'Active'}}</button>
+    </div>
+</div>
