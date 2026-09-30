@@ -17,10 +17,10 @@
     <li>
      <app-item-card 
         [data]="item"
-        (select)="toggleSelected(item)"
-        (disable)="toggleStatus(item)"
-        (markStar)="toggleMakeStar(item.id)"
-        (remove)="removeItem(item.id)"
+        (select)="toggleSelected($event)"
+        (disable)="toggleStatus($event)"
+        (markStar)="toggleMakeStar($event.id)"
+        (remove)="removeItem($event.id)"
      />
     </li>
     }
