@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, input, Output, ViewChild } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInput, MatInputModule } from '@angular/material/input';
-import {  AddItemFormEvent, ItemModel } from '../../core/model';
+import { MatInputModule } from '@angular/material/input';
+import { AddItemFormEvent, ItemModel } from '../../core/model';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 
 @Component({
@@ -21,7 +21,7 @@ export class AddItemForm {
       const item = new ItemModel();
       item.title = title.value;
       this.onAddItem.emit({ value: item });
-     // this.titleField.nativeElement.value = "";
+      // this.titleField.nativeElement.value = "";
     }
     title.value = ''
   }

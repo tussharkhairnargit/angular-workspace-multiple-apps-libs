@@ -3,25 +3,26 @@ ol.list-container {
     list-style: none;
 
     li {
-    &:not(:last-child) {
-        margin-bottom: 10px;
+        &:not(:last-child) {
+            margin-bottom: 10px;
         }
     }
-  
 }
-    .whitespace{
-        padding-top: 25px;
-        padding-bottom: 25px;  
-    }
- .card {
-    padding:  10px;
+
+.whitespace {
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.card {
+    padding: 10px;
     display: flex;
     justify-content: center;
     flex-direction: row;
     align-items: baseline;
-    gap:30px;
+    gap: 30px;
     border: 2px solid rgb(7, 7, 7);
-    
+
     min-height: 70px;
     border-radius: 8px;
-  }
+}
