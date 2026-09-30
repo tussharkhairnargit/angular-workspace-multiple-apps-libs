@@ -1,39 +1,43 @@
-import { C, E } from '@angular/cdk/keycodes';
-import { CommonModule } from '@angular/common';
-import id from '@angular/common/locales/id';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatButton, MatButtonModule } from '@angular/material/button';
+import {  MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInput, MatInputModule } from '@angular/material/input';
+import {  MatInputModule } from '@angular/material/input';
+import { AddItemForm } from '../add-item-form/add-item-form';
+import { AddItemContract, AddItemFormEvent, ItemModel } from '../../core/model';
 
 @Component({
   selector: 'app-item-board',
-  imports: [ FormsModule, MatCardModule, MatInputModule, MatButtonModule, MatButton, MatDividerModule],
+  imports: [FormsModule, MatCardModule, MatInputModule, MatButtonModule,  MatDividerModule, AddItemForm],
   templateUrl: './item-board.html',
   styleUrl: './item-board.scss',
 })
-export class ItemBoard {
+export class ItemBoard implements AddItemContract {
+
   totalItems = 0;
   totalSelected = 0;
   totalDisabled = 0
   totalActive = 0
-totalStared = 0
+  totalStared = 0
 
   listItems: ItemModel[] = [];
 
-
-  addItem(title: HTMLInputElement) {
-    //console.log(title)
-    const item = new ItemModel();
-    item.id = Number(this.listItems.length + 1).toString();
-    item.title = title.value;
-    this.listItems.push(item)
-     this.getState();
-    //console.log("List Items" , this.listItems);
+   onAddItem(event: AddItemFormEvent): void {
+      this.listItems.push(event.value)
+      this.getState();
+      console.log("State :: onAddItem", this.listItems);
   }
+  
+  // addItem(title: HTMLInputElement) {
+  //   //console.log(title)
+  //   const item = new ItemModel();
+  //   item.id = Number(this.listItems.length + 1).toString();
+  //   item.title = title.value;
+  //   this.listItems.push(item)
+  //    this.getState();
+  //   //console.log("List Items" , this.listItems);
+  // }
 
   removeItem(id: string) {
     const indexToRemove = this.listItems.findIndex(item => item.id == id);
@@ -72,21 +76,5 @@ totalStared = 0
     this.totalActive = this.listItems.filter(ele => ele.selected).length;
     this.totalStared = this.listItems.reduce((total: number, ele) => { if (ele.stared) total++; return total }, 0);
   }
-}
-
-export interface ItemModel {
-  id: string;
-  title: string;
-  selected: boolean;
-  stared: boolean;
-  disabled: boolean;
-}
-
-export class ItemModel implements ItemModel {
-  id: string = '';
-  title: string = '';
-  selected: boolean = false;
-  stared: boolean = false;
-  disabled: boolean = false;
 }
 

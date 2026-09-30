@@ -9,11 +9,7 @@
 </div>
  <mat-card-content>
     <section class="card">
-            <mat-form-field appearance="outline">
-                <mat-label>Add item</mat-label>
-                <input matInput #title />
-            </mat-form-field>
-            <button matButton="filled" (click)="addItem(title)"> Add </button>
+        <app-add-item-form (addItem)="onAddItem($event  )"> </app-add-item-form>
     </section>
 
 <ol class="list-container">
