@@ -1,0 +1,101 @@
+ol.list-container {
+    padding: 0px;
+    list-style: none;
+
+    li {
+    &:not(:last-child) {
+        margin-bottom: 10px;
+        }
+    }
+
+  
+}
+    .whitespace{
+        padding-top: 25px;
+        padding-bottom: 25px;  
+    }
+ .card {
+    padding:  10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: baseline;
+    gap:30px;
+    border: 2px solid rgb(7, 7, 7);
+    
+    min-height: 70px;
+    border-radius: 8px;
+  }
+
+.list-item-card {
+    padding: 0px 10px;
+    display: flex;
+    align-items: center;
+    border: 2px solid rgb(221 221 221); //2px solid rgb(7, 7, 7);
+    justify-content: space-around;
+    background-color:#efefef ;// rgb(221, 218, 218);
+    color: rgb(52, 49, 49);
+    min-height: 70px;
+    border-radius: 8px;
+
+
+
+    .id {
+        font-weight: bold;
+        color: rgb(100, 100, 100);
+    }
+
+    .title {
+        text-align: center;
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        /* Base setup for the CSS star pseudo-element */
+
+    }
+
+    #index {
+        min-width: 50px;
+    }
+
+    .star {
+        content: '';
+
+        &::before {
+            content: "\2606";
+            /* Defaults to empty star outline */
+            margin-right: 8px;
+            color: rgb(230, 180, 0);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        /* Angular class binding updates the icon to a solid star */
+        &.is-favorited::before {
+            content: "\2605";
+            /* Fills the star */
+        }
+    }
+
+    .actions {
+        display: flex;
+        gap: 5px;
+
+        button {
+            padding: 4px 8px;
+            cursor: pointer;
+        }
+        button.delete-btn{
+            color: red
+        }
+        // button.delete-btn::before {
+        // content: "\1F5D1"; /* Renders the heavy ✖ icon */
+        // margin-right: 5px; /* Spacing if text follows */
+        // color: rgb(210, 45, 45); /* Red icon accent */
+        //  }
+    }
+
+
+}

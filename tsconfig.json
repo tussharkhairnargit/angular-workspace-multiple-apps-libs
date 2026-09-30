@@ -56,6 +56,12 @@
     },
     {
       "path": "./projects/rxjs-practice/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/easy-ngrx-demo/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/easy-ngrx-demo/tsconfig.spec.json"
     }
   ]
 }

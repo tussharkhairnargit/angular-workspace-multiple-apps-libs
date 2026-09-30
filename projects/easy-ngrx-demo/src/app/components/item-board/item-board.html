@@ -1,0 +1,41 @@
+<mat-card appearance="outlined">
+     <mat-card-header>
+        <mat-card-title>
+            Total items :{{totalItems}} | Selcted Items: {{totalSelected }} | Started Items : {{ totalStared}}
+        </mat-card-title>
+    </mat-card-header>
+<div class="whitespace">
+    <mat-divider/>
+</div>
+ <mat-card-content>
+    <section class="card">
+            <mat-form-field appearance="outline">
+                <mat-label>Add item</mat-label>
+                <input matInput #title />
+            </mat-form-field>
+            <button matButton="filled" (click)="addItem(title)"> Add </button>
+    </section>
+
+<ol class="list-container">
+    @for(item of listItems; track item.id){
+    <li>
+        <div class="list-item-card">
+            <div  id="index"> {{item.id}} </div>
+            <div class="actions">
+                <input type="checkbox" (change)="toggleSelected(item)">
+                <div (click)="toggleMakeStar(item.id)" >
+                    <span class="star"  [class.is-favorited]="item.stared" ></span>
+                </div>
+            </div>
+            <div class="title">{{item.title}} </div>
+            <div class="actions">
+                <button (click)="removeItem(item.id)" class="delete-btn"> &#x1F5D1;</button>
+                <button (click)="toggleState(item)"> {{ item.disabled ? 'Disabled' : 'Active'}}</button>
+            </div>
+        </div>
+    </li>
+    }
+</ol>
+</mat-card-content>
+</mat-card>
+<!-- <button (click)="viewState()"> View State </button> -->
