@@ -2,10 +2,11 @@ import { Component, EventEmitter, input, Output } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {  AddItemFormEvent, ItemModel } from '../../core/model';
+import { MatButton, MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-add-item-form',
-  imports: [MatFormFieldModule, MatInputModule],
+  imports: [MatFormFieldModule, MatInputModule, MatButtonModule],
   templateUrl: './add-item-form.html',
   styleUrl: './add-item-form.scss',
 })
