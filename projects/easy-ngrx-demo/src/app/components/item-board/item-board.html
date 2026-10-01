@@ -1,7 +1,8 @@
+@if (stats$ | async; as stats) {
 <mat-card appearance="outlined">
     <mat-card-header >
         <mat-card-title>
-            Total items :{{totalItems}} | Selcted Items: {{totalSelected }} | Stared Items : {{ totalStared}}
+            Total items :{{stats.totalItems}} | Selcted Items: {{stats.totalSelected}} | Starred Items : {{stats.totalStarred}}
         </mat-card-title>
 
     </mat-card-header>
@@ -14,7 +15,7 @@
         </section>
 
         <ol class="list-container">
-            @for(item of listItems; track item){
+            @for(item of (listItems$ | async) ?? []; track item.id){
             <li>
                 <app-item-card [data]="item" (select)="toggleSelected($event)" (disable)="toggleStatus($event)"
                     (markStar)="toggleMakeStar($event.id)" (remove)="removeItem($event.id)" />
@@ -23,4 +24,5 @@
         </ol>
     </mat-card-content>
 </mat-card>
+}
 <button (click)="viewState()"> View State </button>

@@ -3,7 +3,7 @@
     <div class="actions">
         <input type="checkbox" (change)="toggleSelected(item)">
         <div (click)="toggleMakeStar(item)">
-            <span class="star" [class.is-favorited]="item.stared"></span>
+            <span class="star" [class.is-favorited]="item.starred"></span>
         </div>
     </div>
     <div class="title">{{item.title}} </div>

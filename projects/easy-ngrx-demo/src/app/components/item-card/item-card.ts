@@ -21,7 +21,7 @@ export class ItemCard {
   }
 
   toggleMakeStar(item: ItemModel) {
-   // item.stared = !item.stared;
+  // item.starred = !item.starred;
     this.markStar.emit(item);
   }
 

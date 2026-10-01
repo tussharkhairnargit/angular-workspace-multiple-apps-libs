@@ -1,16 +1,16 @@
 export interface ItemModel {
-  id: string;
-  title: string;
-  selected: boolean;
-  stared: boolean;
-  disabled: boolean;
+    id: string;
+    title: string;
+    selected: boolean;
+    starred: boolean;
+    disabled: boolean;
 }
 
 export class ItemModel implements ItemModel {
     id: string = '';
     title: string = '';
     selected: boolean = false;
-    stared: boolean = false;
+    starred: boolean = false;
     disabled: boolean = false;
 }
 
